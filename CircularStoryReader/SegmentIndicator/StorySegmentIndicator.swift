@@ -50,7 +50,7 @@ class StorySegmentIndicator: UIView {
     }
     
     private func setup() {
-        drawStaticSegments()
+        drawStaticSegments(stories: [])
         drawDynamicSegments()
     }
     
@@ -77,7 +77,8 @@ class StorySegmentIndicator: UIView {
         }
     }
     
-    private func drawStaticSegments() {
+    
+    func drawStaticSegments(stories: [StoryArray]?) {
         staticSegments = []
         guard settings.isStaticSegmentsVisible else {
             return
@@ -90,18 +91,52 @@ class StorySegmentIndicator: UIView {
         let halfSpace = toRadians(settings.spaceBetweenSegments) / 2 + spaceCorrelation / 2
         let startPointPaddingInRadians = toRadians(Degrees(settings.startPointPadding))
         
-        for segmentIndex in 0..<settings.segmentsCount {
+        for segmentIndex in 0..<stories!.count  {
             let index = CGFloat(segmentIndex)
             let startPoint = startPointPaddingInRadians + segmentSpace * index + halfSpace + 2 * halfSpace * index
             let endPoint = startPoint + segmentSpace
+            
+            let defaultColor: UIColor
+            if stories?[segmentIndex].seenType == 1 {
+                defaultColor = UIColor(red: 219.0/255, green: 187.0/255, blue: 148.0/255, alpha: 1)
+            } else {
+                defaultColor = UIColor(red: 255.0/255, green: 71.0/255, blue: 32.0/255, alpha: 1)
+            }
+            
             let segmentShape = getSegment(startAngle: startPoint,
                                           endInAngle: endPoint,
-                                          color: settings.defaultSegmentColor,
+                                          color: defaultColor,
                                           strokeEnd: 1)
             staticSegments.append(segmentShape)
             self.layer.addSublayer(segmentShape)
         }
     }
+    
+//    private func drawStaticSegments() {
+//        staticSegments = []
+//        guard settings.isStaticSegmentsVisible else {
+//            return
+//        }
+//        let spaceCorrelation = toRadians(Degrees((settings.segmentWidth)))
+//        let emptySpace = Double(settings.segmentsCount) * settings.spaceBetweenSegments
+//        let emptySpaceInRadians = toRadians(emptySpace)
+//        let summedSpaceForSegments = 2 * Radians.pi - emptySpaceInRadians
+//        let segmentSpace = summedSpaceForSegments / Radians(settings.segmentsCount) - spaceCorrelation
+//        let halfSpace = toRadians(settings.spaceBetweenSegments) / 2 + spaceCorrelation / 2
+//        let startPointPaddingInRadians = toRadians(Degrees(settings.startPointPadding))
+//
+//        for segmentIndex in 0..<settings.segmentsCount {
+//            let index = CGFloat(segmentIndex)
+//            let startPoint = startPointPaddingInRadians + segmentSpace * index + halfSpace + 2 * halfSpace * index
+//            let endPoint = startPoint + segmentSpace
+//            let segmentShape = getSegment(startAngle: startPoint,
+//                                          endInAngle: endPoint,
+//                                          color: settings.defaultSegmentColor,
+//                                          strokeEnd: 1)
+//            staticSegments.append(segmentShape)
+//            self.layer.addSublayer(segmentShape)
+//        }
+//    }
     
     private func getSegment(startAngle: Radians,
                             endInAngle: Radians,

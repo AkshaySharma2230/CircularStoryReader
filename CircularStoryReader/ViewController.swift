@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         storyCollectionView.dataSource = self
         
         
-        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 1))
         storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
         storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
         storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
@@ -84,23 +84,27 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource,U
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let storyCount = userArray.count
+        let storyCount = userArray[indexPath.row].userStoryArray.count
 
         var settings = StorySegmentIndicatorSettings()
         settings.segmentBorderType = .round
         settings.segmentWidth = 2
         settings.segmentsCount = storyCount
         
+        let segment = StorySegmentIndicator(frame: CGRect(x: 0, y: 0, width: 76, height: 76))
+        segment.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
+        segment.settings = settings
+        segment.settings.defaultSegmentColor = UIColor(red: 255.0/255, green: 71.0/255, blue: 32.0/255, alpha: 1)
+        
+        let stories = userArray[indexPath.row].userStoryArray
+        segment.drawStaticSegments(stories: stories)
+        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "StoryCVC", for: indexPath) as? StoryCVC else {
             return UICollectionViewCell()
         }
         
         cell.colorView.subviews.forEach { $0.removeFromSuperview() } // Remove any existing subviews from the colorView
-        let segment = StorySegmentIndicator(frame: CGRect(x: 0, y: 0, width: 76, height: 76))
-        segment.transform = CGAffineTransform(rotationAngle: -CGFloat.pi / 2)
-        segment.settings = settings
-        segment.settings.defaultSegmentColor = UIColor(red: 255.0/255, green: 71.0/255, blue: 32.0/255, alpha: 1)
-        indicators.append(segment)
+        
         cell.colorView.addSubview(segment)
         
         return cell
