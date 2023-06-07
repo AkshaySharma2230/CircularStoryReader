@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D06C2F692A30C1EA00E731A4 /* StoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D06C2F682A30C1EA00E731A4 /* StoryModel.swift */; };
 		D0B6A1412A279794003710B6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6A1402A279794003710B6 /* AppDelegate.swift */; };
 		D0B6A1432A279794003710B6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6A1422A279794003710B6 /* SceneDelegate.swift */; };
 		D0B6A1452A279794003710B6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0B6A1442A279794003710B6 /* ViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D06C2F682A30C1EA00E731A4 /* StoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryModel.swift; sourceTree = "<group>"; };
 		D0B6A13D2A279794003710B6 /* CircularStoryReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CircularStoryReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0B6A1402A279794003710B6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D0B6A1422A279794003710B6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D06C2F672A30C1BC00E731A4 /* StoryModel */ = {
+			isa = PBXGroup;
+			children = (
+				D06C2F682A30C1EA00E731A4 /* StoryModel.swift */,
+			);
+			path = StoryModel;
+			sourceTree = "<group>";
+		};
 		D0B6A1342A279794003710B6 = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +115,7 @@
 		D0B6A13F2A279794003710B6 /* CircularStoryReader */ = {
 			isa = PBXGroup;
 			children = (
+				D06C2F672A30C1BC00E731A4 /* StoryModel */,
 				D0B6A1772A279C75003710B6 /* SegmentIndicator */,
 				D0B6A1702A2798E4003710B6 /* StoryCVC */,
 				D0B6A1402A279794003710B6 /* AppDelegate.swift */,
@@ -289,6 +300,7 @@
 				D0B6A1412A279794003710B6 /* AppDelegate.swift in Sources */,
 				D0B6A1752A279912003710B6 /* StoryCVC.swift in Sources */,
 				D0B6A1432A279794003710B6 /* SceneDelegate.swift in Sources */,
+				D06C2F692A30C1EA00E731A4 /* StoryModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

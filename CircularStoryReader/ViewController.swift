@@ -14,8 +14,12 @@ class ViewController: UIViewController {
     
     
     //MARK: Define Array
-    var userArray = ["pic","pic","pic","pic","pic"]
+//    var userArray = ["pic","pic","pic","pic","pic"]
+    var userArray = [StoryModel]()
+    var storyArray = [StoryArray]()
     var indicators: [StorySegmentIndicator] = []
+    
+    
     
     //MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -24,6 +28,25 @@ class ViewController: UIViewController {
         
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
+        
+        
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        storyArray.append(StoryArray(storyImage: "pic", seenType: 0))
+        
+        
+        if storyArray.count > 0 {
+            userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
+            userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
+            userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
+            userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
+        }
+        else {
+            // Do Something here...
+        }
+        
         // Do any additional setup after loading the view.
     }
     
