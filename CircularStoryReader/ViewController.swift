@@ -46,8 +46,6 @@ class ViewController: UIViewController {
         else {
             // Do Something here...
         }
-        
-        // Do any additional setup after loading the view.
     }
     
     
