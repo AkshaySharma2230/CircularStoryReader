@@ -43,7 +43,7 @@ class ViewController: UIViewController {
             userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
             userArray.append(StoryModel.init(imageURL: "pic", userStoryArray: storyArray))
         }
-        else {
+        else { 
             // Do Something here...
         }
     }
